@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.JFROG_USER_WRITER }}
           password: ${{ secrets.JFROG_PASSWORD_WRITER }}
           dockerfile: docker/shipping/Dockerfile
-          path: target/
+          path: target/pramod
           repository: ${{ env.GROUP }}/${{ env.REPO }}
           tag_with_ref: true
           tag_with_sha: true
