@@ -42,13 +42,7 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
-
-      # Upload coverage results to coveralls
-      - name: Submit Coveralls
-        env:
-          COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
-        run: mvn -DrepoToken=${COVERALLS_TOKEN} -DserviceJobId=${GITHUB_RUN_ID} -Dbranch=${GITHUB_REF} -DpullRequest=${GITHUB_HEAD_REF} -DserviceName=GITHUB verify jacoco:report coveralls:report
-
+      
       # Push to artifactory 
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
