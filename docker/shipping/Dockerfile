@@ -1,7 +1,7 @@
 FROM weaveworksdemos/msd-java:jre-latest
 
 WORKDIR /usr/src/app
-COPY ./work/shipping/shipping/target/*.jar ./work/shipping/shipping/target/app.jar
+COPY ./target/*.jar /usr/src/app/app.jar
 
 RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./app.jar
 
