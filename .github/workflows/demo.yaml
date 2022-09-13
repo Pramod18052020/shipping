@@ -50,7 +50,7 @@ jobs:
       # Login & Build & Push to artifactory 
       - uses: actions/checkout@v3
       - name: Docker Login
-        run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD" $DOCKER_REGISTRY
+        run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD_WRITER" $DOCKER_REGISTRY
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
