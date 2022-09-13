@@ -49,7 +49,7 @@ jobs:
               
       # Login & Build & Push to artifactory 
       - uses: actions/checkout@v3
-      - name: Docker Login
+      - name: JCR Login
         run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD_WRITER" $DOCKER_REGISTRY
 
       - name: Build the Docker image
