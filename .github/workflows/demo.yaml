@@ -46,13 +46,20 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
-              
+      
+                    
       # Login & Build & Push to artifactory 
-      - name: JCR Login
-        run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD_WRITER" $DOCKER_REGISTRY
+      - name: Login to JFrog
+        uses: actions/checkout@v3
+        with:
+          registry: https://172.16.238.184
+          username: ${{ secrets.JFROG_USER_WRITER }}
+          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
+      
+      
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
+        run: docker build . --file /docker/shipping/Dockerfile  --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
 
       - name: Push to JFrog
         run: docker push "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
