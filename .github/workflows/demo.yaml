@@ -19,8 +19,8 @@ jobs:
       GROUP: weaveworksdemos
       COMMIT: ${{ github.sha }}
       REPO: shipping
-      DOCKER_REGISTRY: https://172.16.238.184
-      APP_NAME: docker-local/
+      DOCKER_REGISTRY: 172.16.238.184
+      APP_NAME: docker-local
       JFROG_USER_WRITER: ${{ secrets.JFROG_USER_WRITER }}
       JFROG_PASSWORD_WRITER: ${{ secrets.JFROG_PASSWORD_WRITER }}
     steps:
