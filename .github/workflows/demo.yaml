@@ -24,7 +24,7 @@ jobs:
       JFROG_USER_WRITER: ${{ secrets.JFROG_USER_WRITER }}
       JFROG_PASSWORD_WRITER: ${{ secrets.JFROG_PASSWORD_WRITER }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
@@ -48,7 +48,6 @@ jobs:
         run: mvn integration-test
               
       # Login & Build & Push to artifactory 
-      - uses: actions/checkout@v3
       - name: JCR Login
         run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD_WRITER" $DOCKER_REGISTRY
 
