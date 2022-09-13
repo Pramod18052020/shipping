@@ -59,7 +59,7 @@ jobs:
       
 
       - name: Build the Docker image
-        run: docker build . --file docker/shipping/Dockerfile  --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
+        run: docker build . --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
 
       - name: Push to JFrog
         run: docker push "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
