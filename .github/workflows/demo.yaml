@@ -42,24 +42,17 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
-        
-      - name: Login to JFrog
-        uses: actions/checkout@v3
-        with:
-          registry: https://172.16.238.184
-          username: ${{ secrets.JFROG_USER_WRITER }}
-          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
-          
+              
       # Push to artifactory 
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      - name: Push to JCR
+        uses: actions/checkout@v3
         if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master'
         with:
           registry: https://172.16.238.184
           username: ${{ secrets.JFROG_USER_WRITER }}
           password: ${{ secrets.JFROG_PASSWORD_WRITER }}
           dockerfile: docker/shipping/Dockerfile
-          path: target/pramod
+          path: target/
           repository: ${{ env.GROUP }}/${{ env.REPO }}
           tag_with_ref: true
           tag_with_sha: true
