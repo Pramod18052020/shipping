@@ -47,7 +47,7 @@ jobs:
       - name: Integration Tests
         run: mvn integration-test
               
-      # Push to artifactory 
+      # Login & Build & Push to artifactory 
       - uses: actions/checkout@v3
       - name: Docker Login
         run: docker login -u "$JFROG_USER_WRITER" -p "$JFROG_PASSWORD" $DOCKER_REGISTRY
