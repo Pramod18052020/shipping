@@ -1,16 +1,5 @@
 name: ci
-
-on:
-  push:
-    branches:
-      - "*"  # run for branches
-    tags:
-      - "*"  # run for tags
-  pull_request:
-    branches:
-      - "*"  # run for branches
-    tags:
-      - "*"  # run for tags
+on: [workflow_dispatch]
 
 jobs:
   test:
