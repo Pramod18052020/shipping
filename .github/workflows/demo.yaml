@@ -9,7 +9,7 @@ jobs:
       COMMIT: ${{ github.sha }}
       REPO: shipping
       DOCKER_REGISTRY: 172.16.238.184
-      APP_NAME: docker/
+      APP_NAME: docker
       JFROG_USER_WRITER: ${{ secrets.JFROG_USER_WRITER }}
       JFROG_PASSWORD_WRITER: ${{ secrets.JFROG_PASSWORD_WRITER }}
     steps:
