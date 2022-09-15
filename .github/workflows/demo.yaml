@@ -13,6 +13,14 @@ jobs:
       JFROG_USER_WRITER: ${{ secrets.JFROG_USER_WRITER }}
       JFROG_PASSWORD_WRITER: ${{ secrets.JFROG_PASSWORD_WRITER }}
     steps:
+      # Login & Build & Push to artifactory 
+      - name: Login to JFrog
+        uses: actions/checkout@v3
+        with:
+          registry: https://172.16.238.184
+          username: ${{ secrets.JFROG_USER_WRITER }}
+          password: ${{ secrets.JFROG_PASSWORD_WRITER }}   
+          
       - uses: actions/checkout@v3
 
       - name: Set up JDK 1.8
@@ -37,18 +45,7 @@ jobs:
         run: mvn integration-test
         
       - name: List files in the repository
-        run: ls ${{ github.workspace }}
-      
-                    
-      # Login & Build & Push to artifactory 
-      - name: Login to JFrog
-        uses: actions/checkout@v3
-        with:
-          registry: https://172.16.238.184
-          username: ${{ secrets.JFROG_USER_WRITER }}
-          password: ${{ secrets.JFROG_PASSWORD_WRITER }}
-      
-      
+        run: ls ${{ github.workspace }}      
 
       - name: Build the Docker image
         run: docker build . --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
