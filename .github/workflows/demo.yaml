@@ -35,6 +35,9 @@ jobs:
 
       - name: Integration Tests
         run: mvn integration-test
+        
+      - name: List files in the repository
+        run: ls ${{ github.workspace }}
       
                     
       # Login & Build & Push to artifactory 
