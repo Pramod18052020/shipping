@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 
 jobs:
   test:
-    runs-on: shipping
+    runs-on: ubuntu-latest
     env:
       GROUP: weaveworksdemos
       COMMIT: ${{ github.sha }}
