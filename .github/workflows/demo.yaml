@@ -49,6 +49,9 @@ jobs:
 
       - name: Build the Docker image
         run: docker build . --tag "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
+        
+      - name: check the jfrog status
+        run: curl -I -k -v http://172.16.238.184/api/system/ping && curl -I -k -v https://172.16.238.184/api/system/ping
 
       - name: Push to JFrog
         run: docker push "$DOCKER_REGISTRY/$APP_NAME:1.0.${{ github.run_id }}"
